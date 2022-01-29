@@ -105,7 +105,7 @@ init()
 
 version = "0.4"
 print(
-    f"-> Welcome to {Fore.GREEN}{Style.DIM}commandXS {version}{Style.RESET_ALL}\n")
+    f"-> Welcome to {Fore.GREEN}{Style.DIM}fireTR {version}{Style.RESET_ALL}\n")
 
 while True:
     commandEnterred = input("-> ")
