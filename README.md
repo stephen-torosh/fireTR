@@ -12,8 +12,9 @@ This application created with Python 3.10
 - **version** - current version of CommandXS
 
 ## How to launch:
-1. create a folder for the terminal
-2. create python file in this folder
-3. copy code to python file
-4. launch with powershell
-5. you can use it
+1. install python 3.10
+2. create a folder for the terminal
+3. create python file in this folder
+4. copy code to python file
+5. launch with powershell
+6. you can use it
