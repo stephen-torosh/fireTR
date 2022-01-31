@@ -68,7 +68,7 @@ def listCommands():
     print(f"{bcolors.OKGREEN}rmdir - remove directory name{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}cat - read file in directory name{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}crf - create file in directory name{bcolors.ENDC}")
-    print(f"{bcolors.OKGREEN}version - current version of CommandXS{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}version - current version of fireTR{bcolors.ENDC}")
 
 
 def command(value):
