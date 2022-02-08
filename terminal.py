@@ -111,7 +111,7 @@ def command(value):
             createFile(filePath, "Hey guys")
         case "rmf":
             filePath = input("-> Enter file path: ")
-            rf(filePath)
+            rmf(filePath)
         case "cat":
             fileName = input("-> Enter file name: ")
             cat(fileName)
