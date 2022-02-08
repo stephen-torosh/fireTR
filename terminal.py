@@ -109,7 +109,8 @@ def command(value):
             rmdir(directoryName)
         case "crf":
             filePath = input("-> Enter file path: ")
-            createFile(filePath, "Hey guys")
+            txtInFile = input("-> Enter Text to this file: ")
+            createFile(filePath, txtInFile)
         case "rmf":
             filePath = input("-> Enter file path: ")
             rmf(filePath)
