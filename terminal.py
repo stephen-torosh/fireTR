@@ -98,7 +98,7 @@ def command(value):
             ls(directory)
         case "cd":
             directoryName = input(
-                "-> enter the desired current directory to work with it")
+                "-> enter the desired current directory to work with it:")
             cd(directoryName)
         case "mkdir":
             directoryName = input("-> Enter directory name: ")
