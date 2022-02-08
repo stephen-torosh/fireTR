@@ -89,6 +89,7 @@ def listCommands():
     print(f"{bcolors.OKGREEN}version - current version of fireTR{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}rmf - remove file in directory name{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}cd - set the desired current directory to work with it{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}clear - clear all screen{bcolors.ENDC}")
 
 
 def command(value):
