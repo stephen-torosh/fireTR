@@ -33,7 +33,7 @@ def mkdir(path):
         print(f"{bcolors.FAIL}-> filed to create directory{bcolors.ENDC}")
 
 
-def rf(filePath):
+def rmf(filePath):
     try:
         os.remove(filePath)
         print(
