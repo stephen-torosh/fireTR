@@ -33,6 +33,24 @@ def mkdir(path):
         print(f"{bcolors.FAIL}-> filed to create directory{bcolors.ENDC}")
 
 
+def rf(filePath):
+    try:
+        os.remove(filePath)
+        print(
+            f"{bcolors.OKGREEN}-> File '{filePath}' successfully removed{bcolors.ENDC}")
+    except FileExistsError as error:
+        print(f"{bcolors.FAIL}-> file not found{bcolors.ENDC}")
+
+
+def cd(path):
+    try:
+        os.chdir(path)
+        print(
+            f"{bcolors.OKGREEN}-> Current directory successfully defined{bcolors.ENDC}")
+    except FileExistsError as error:
+        print(f"{bcolors.FAIL}-> Current directory does not exists{bcolors.ENDC}")
+
+
 def rmdir(path):
     if os.path.isdir(path):
         os.rmdir(path)
@@ -69,6 +87,8 @@ def listCommands():
     print(f"{bcolors.OKGREEN}cat - read file in directory name{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}crf - create file in directory name{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}version - current version of fireTR{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}rmf - remove file in directory name{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}cd - set the desired current directory to work with it{bcolors.ENDC}")
 
 
 def command(value):
@@ -76,6 +96,10 @@ def command(value):
         case "ls":
             directory = input("-> Enter directory path: ")
             ls(directory)
+        case "cd":
+            directoryName = input(
+                "-> enter the desired current directory to work with it")
+            cd(directoryName)
         case "mkdir":
             directoryName = input("-> Enter directory name: ")
             mkdir(directoryName)
@@ -85,6 +109,9 @@ def command(value):
         case "crf":
             filePath = input("-> Enter file path: ")
             createFile(filePath, "Hey guys")
+        case "rmf":
+            filePath = input("-> Enter file path: ")
+            rf(filePath)
         case "cat":
             fileName = input("-> Enter file name: ")
             cat(fileName)
@@ -103,10 +130,12 @@ def command(value):
 # Initialize colorama
 init()
 
-version = "0.4"
-print(
-    f"-> Welcome to {Fore.GREEN}{Style.DIM}fireTR {version}{Style.RESET_ALL}\n")
+print("FireTR 1.0 official\n")
+print("Copyright fireINC corporation\n")
+print("Launching with PowerShell or Python 3.10\n")
+print("Type 'help' to get help\n")
 
 while True:
     commandEnterred = input("-> ")
     command(commandEnterred)
+
