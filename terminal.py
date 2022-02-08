@@ -23,7 +23,6 @@ def ls(path):
     else:
         print(f"{bcolors.FAIL}-> directory not found{bcolors.ENDC}")
 
-
 def mkdir(path):
     try:
         os.mkdir(path)
@@ -41,15 +40,13 @@ def rmf(filePath):
     except FileExistsError as error:
         print(f"{bcolors.FAIL}-> file not found{bcolors.ENDC}")
 
-
 def cd(path):
     try:
         os.chdir(path)
         print(
             f"{bcolors.OKGREEN}-> Current directory successfully defined{bcolors.ENDC}")
-    except FileExistsError as error:
+    except:
         print(f"{bcolors.FAIL}-> Current directory does not exists{bcolors.ENDC}")
-
 
 def rmdir(path):
     if os.path.isdir(path):
@@ -59,7 +56,6 @@ def rmdir(path):
     else:
         print(f"{bcolors.FAIL}-> direcotry not found{bcolors.ENDC}")
 
-
 def cat(path):
     if os.path.isfile(path):
         with open(path) as f:
@@ -68,16 +64,13 @@ def cat(path):
     else:
         print(f"{bcolors.FAIL}-> file not found{bcolors.ENDC}")
 
-
 def createFile(filePath, textLine):
     with open(filePath, 'w') as f:
         f.write(textLine)
     print(f"{bcolors.OKGREEN}-> File '{filePath}' successfully created{bcolors.ENDC}")
 
-
 def clearScreen():
     system('cls')
-
 
 def listCommands():
     print(f"{bcolors.OKGREEN}Available commands:{bcolors.ENDC}")
@@ -90,7 +83,6 @@ def listCommands():
     print(f"{bcolors.OKGREEN}rmf - remove file in directory name{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}cd - set the desired current directory to work with it{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}clear - clear all screen{bcolors.ENDC}")
-
 
 def command(value):
     match value:
@@ -125,7 +117,6 @@ def command(value):
             clearScreen()
         case _:
             listCommands()
-
 
 # Application start
 
