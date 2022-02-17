@@ -51,10 +51,6 @@ def cd(path):
         print(f"{bcolors.FAIL}-> Current directory does not exists{bcolors.ENDC}")
 
 
-def cdRestartType():
-    os.chdir(".")
-
-
 def rmdir(path):
     if os.path.isdir(path):
         os.rmdir(path)
@@ -81,15 +77,6 @@ def createFile(filePath, textLine):
 
 def clearScreen():
     system('cls')
-
-
-def restart():
-    clearScreen()
-    cdRestartType()
-    print("FireTR 1.0 official\n")
-    print("Copyright fireINC corporation\n")
-    print("Launching with PowerShell or Python 3.10\n")
-    print("Type 'help' to get help\n")
 
 
 def listCommands():
@@ -136,8 +123,6 @@ def command(value):
             listCommands()
         case "clear":
             clearScreen()
-        case "restart":
-            restart()
         case _:
             listCommands()
 
@@ -153,5 +138,5 @@ print("Launching with PowerShell or Python 3.10\n")
 print("Type 'help' to get help\n")
 
 while True:
-    commandEnterred = input("FTR " + os.getcwd() + " #: ")
+    commandEnterred = input("-> ")
     command(commandEnterred)
