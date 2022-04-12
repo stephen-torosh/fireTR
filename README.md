@@ -1,6 +1,6 @@
 # fireTR terminal
 
-This application activated with Python 3
+This terminal application activated with Python 3
 
 ## List of available commands:
 
