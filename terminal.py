@@ -132,7 +132,7 @@ def command(value):
 # Initialize colorama
 init()
 
-print("FireTR 1.1 official\n")
+print("FireTR 1.0 official\n")
 print("Copyright fireINC corporation\n")
 print("Launching with PowerShell or Python 3.10\n")
 print("Type 'help' to get help\n")
