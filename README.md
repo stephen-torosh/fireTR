@@ -1,6 +1,6 @@
 # fireTR terminal
 
-This application created with Python 3.10
+This application activated with Python 3.10
 
 ## List of available commands:
 
