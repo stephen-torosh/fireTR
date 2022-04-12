@@ -1,7 +1,7 @@
 import os
 from os import system
 from colorama import init, Fore, Style
-
+import time
 
 class bcolors:
     HEADER = '\033[95m'
@@ -15,49 +15,51 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
+    
+
 def ls(path):
     if os.path.isdir(path):
         files = os.listdir(path)
         for f in files:
             print(f)
     else:
-        print(f"{bcolors.FAIL}-> directory not found{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}-> FTR: directory not found{bcolors.ENDC}")
 
 
 def mkdir(path):
     try:
         os.mkdir(path)
         print(
-            f"{bcolors.OKGREEN}-> Directory '{path}' successfully created{bcolors.ENDC}")
+            f"{bcolors.OKGREEN}-> FTR: Directory '{path}' successfully created{bcolors.ENDC}")
     except FileExistsError as error:
-        print(f"{bcolors.FAIL}-> filed to create directory{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}-> FTR: failed to create directory{bcolors.ENDC}")
 
 
 def rmf(filePath):
     try:
         os.remove(filePath)
         print(
-            f"{bcolors.OKGREEN}-> File '{filePath}' successfully removed{bcolors.ENDC}")
+            f"{bcolors.OKGREEN}-> FTR: File '{filePath}' successfully removed{bcolors.ENDC}")
     except FileExistsError as error:
-        print(f"{bcolors.FAIL}-> file not found{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}-> FTR: file not found{bcolors.ENDC}")
 
 
 def cd(path):
     try:
         os.chdir(path)
         print(
-            f"{bcolors.OKGREEN}-> Current directory successfully defined{bcolors.ENDC}")
+            f"{bcolors.OKGREEN}-> FTR: Current directory successfully defined{bcolors.ENDC}")
     except:
-        print(f"{bcolors.FAIL}-> Current directory does not exists{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}-> FTR: Current directory does not exists{bcolors.ENDC}")
 
 
 def rmdir(path):
     if os.path.isdir(path):
         os.rmdir(path)
         print(
-            f"{bcolors.OKGREEN}-> Directory '{path}' successfully removed{bcolors.ENDC}")
+            f"{bcolors.OKGREEN}-> FTR: Directory '{path}' successfully removed{bcolors.ENDC}")
     else:
-        print(f"{bcolors.FAIL}-> direcotry not found{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}-> FTR: direcotry not found{bcolors.ENDC}")
 
 
 def cat(path):
@@ -66,13 +68,13 @@ def cat(path):
             contents = f.read()
             print(contents)
     else:
-        print(f"{bcolors.FAIL}-> file not found{bcolors.ENDC}")
+        print(f"{bcolors.FAIL}-> FTR: file not found{bcolors.ENDC}")
 
 
 def createFile(filePath, textLine):
     with open(filePath, 'w') as f:
         f.write(textLine)
-    print(f"{bcolors.OKGREEN}-> File '{filePath}' successfully created{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}-> FTR: File '{filePath}' successfully created{bcolors.ENDC}")
 
 
 def clearScreen():
@@ -89,42 +91,39 @@ def listCommands():
     print(f"{bcolors.OKGREEN}version - current version of fireTR{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}rmf - remove file in directory name{bcolors.ENDC}")
     print(f"{bcolors.OKGREEN}cd - set the desired current directory to work with it{bcolors.ENDC}")
-    print(f"{bcolors.OKGREEN}clear - clear all screen{bcolors.ENDC}")
 
 
 def command(value):
     match value:
         case "ls":
-            directory = input("-> Enter directory path: ")
-            ls(directory)
+            ls(interpretatedCommandEnterred[1])
         case "cd":
-            directoryName = input(
-                "-> enter the desired current directory to work with it: ")
-            cd(directoryName)
+            cd(interpretatedCommandEnterred[1])
         case "mkdir":
-            directoryName = input("-> Enter directory name: ")
-            mkdir(directoryName)
+            mkdir(interpretatedCommandEnterred[1])
         case "rmdir":
-            directoryName = input("-> Enter directory name: ")
-            rmdir(directoryName)
+            rmdir(interpretatedCommandEnterred[1])
         case "crf":
-            filePath = input("-> Enter file path: ")
-            txtInFile = input("-> Enter Text to this file: ")
-            createFile(filePath, txtInFile)
+            txtInFile = input("-> FTR: Enter Text to this file: ")
+            createFile(interpretatedCommandEnterred[1], txtInFile)
         case "rmf":
-            filePath = input("-> Enter file path: ")
-            rmf(filePath)
+            rmf(interpretatedCommandEnterred[1])
         case "cat":
-            fileName = input("-> Enter file name: ")
-            cat(fileName)
+            cat(interpretatedCommandEnterred[1])
         case "version":
-            print("version: 1.0 official")
+            print("FTR: version: 1.1 official")
         case "help":
             listCommands()
-        case "clear":
-            clearScreen()
-        case _:
-            listCommands()
+        case "restart":
+            time.sleep(1)
+            os.chdir(".")
+            start()
+        
+
+            
+            
+            
+       
 
 # Application start
 
@@ -132,11 +131,18 @@ def command(value):
 # Initialize colorama
 init()
 
-print("FireTR 1.0 official\n")
-print("Copyright fireINC corporation\n")
-print("Launching with PowerShell or Python 3.10\n")
-print("Type 'help' to get help\n")
+def start():
+    os.chdir(".")
+    print("FireTR 1.1 official\n")
+    print("Copyright (c) FireInc corporation\n")
+    print("Type 'help' to get help\n")
+
+start()
 
 while True:
     commandEnterred = input("FTR " + os.getcwd() + " #: ")
-    command(commandEnterred)
+    interpretatedCommandEnterred: list = commandEnterred.split()
+    try:
+        command(interpretatedCommandEnterred[0])
+    except:
+        pass
